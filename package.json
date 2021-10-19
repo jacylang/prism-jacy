@@ -1,0 +1,10 @@
+{
+  "name": "prism-jacy",
+  "version": "0.1.0",
+  "description": "Prism syntax highlighter for Jacy",
+  "main": "index.js",
+  "scripts": {
+  },
+  "author": "hazer-hazer",
+  "license": "ISC"
+}
