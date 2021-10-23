@@ -19,7 +19,7 @@ Prism.languages.jacy = {
             pattern: /(^|[^\\:])\/\/.*/,
             lookbehind: true,
             greedy: true
-        }
+        },
     ],
     'string': {
         pattern: /b?"(?:\\[\s\S]|[^\\"])*"|b?r(#*)"(?:[^"]|"(?!\1))*"\1/,
@@ -35,8 +35,8 @@ Prism.languages.jacy = {
         greedy: true,
         alias: 'attr-name',
         inside: {
-            'string': null // see below
-        }
+            'string': null,
+        },
     },
 
     // Closure params should not be confused with bitwise OR |
@@ -50,7 +50,7 @@ Prism.languages.jacy = {
                 alias: 'punctuation'
             },
             rest: null // see below
-        }
+        },
     },
 
     'lifetime-annotation': {
@@ -77,29 +77,25 @@ Prism.languages.jacy = {
     },
     'module-declaration': [
         {
-            pattern: /(\b(?:crate|mod)\s+)[a-z][a-z_\d]*/,
+            pattern: /(\b(?:party|mod)\s+)[a-z][a-z_\d]*/,
             lookbehind: true,
             alias: 'namespace'
         },
         {
-            pattern: /(\b(?:crate|self|super)\s*)::\s*[a-z][a-z_\d]*\b(?:\s*::(?:\s*[a-z][a-z_\d]*\s*::)*)?/,
+            pattern: /(\b(?:party|self|super)\s*)::\s*[a-z][a-z_\d]*\b(?:\s*::(?:\s*[a-z][a-z_\d]*\s*::)*)?/,
             lookbehind: true,
             alias: 'namespace',
             inside: {
                 'punctuation': /::/
-            }
-        }
+            },
+        },
     ],
     'keyword': [
-        /\b(?:as|break|const|continue|else|enum|false|func|for|if|impl|in|let|loop|match|mod|move|mut|party|priv|pub|ref|return|self|Self|static|struct|super|trait|true|type|use|where|while)\b/,
+        /\b(?:_|and|as|async|await|break|const|continue|do|elif|else|enum|false|for|func|if|impl|import|in|infix|init|loop|match|mod|move|mut|not|of|or|return|party|pub|ref|self|static|struct|super|this|trait|true|type|use|let|where|while)\b/,
         /\b(?:[ui](?:8|16|32|64|128)|f(?:32|64)|uint|int|bool|char|str)\b/
     ],
 
     'function': /\b[a-z_]\w*(?=\s*(?:::\s*<|\())/,
-    'macro': {
-        pattern: /\b\w+!/,
-        alias: 'property'
-    },
     'constant': /\b[A-Z_][A-Z_\d]+\b/,
     'class-name': /\b[A-Z]\w*\b/,
 
@@ -107,7 +103,7 @@ Prism.languages.jacy = {
         pattern: /(?:\b[a-z][a-z_\d]*\s*::\s*)*\b[a-z][a-z_\d]*\s*::(?!\s*<)/,
         inside: {
             'punctuation': /::/
-        }
+        },
     },
 
     // Hex, oct, bin, dec numbers with visual separators and type suffix
