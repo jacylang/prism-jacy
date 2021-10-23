@@ -66,7 +66,7 @@ Prism.languages.jacy = {
     'variable': /\$\w+/,
 
     'function-definition': {
-        pattern: /(\bfn\s+)\w+/,
+        pattern: /(\bfunc\s+)\w+/,
         lookbehind: true,
         alias: 'function'
     },
