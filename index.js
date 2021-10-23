@@ -73,7 +73,7 @@ Prism.languages.jacy = {
     'type-definition': {
         pattern: /(\b(?:enum|struct|union)\s+)\w+/,
         lookbehind: true,
-        alias: 'class-name'
+        alias: 'class-name',
     },
     'module-declaration': [
         {
@@ -92,12 +92,15 @@ Prism.languages.jacy = {
     ],
     'keyword': [
         /\b(?:_|and|as|async|await|break|const|continue|do|elif|else|enum|false|for|func|if|impl|import|in|infix|init|loop|match|mod|move|mut|not|of|or|return|party|pub|ref|self|static|struct|super|this|trait|true|type|use|let|where|while)\b/,
-        /\b(?:[ui](?:8|16|32|64|128)|f(?:32|64)|uint|int|bool|char|str)\b/
     ],
 
     'function': /\b[a-z_]\w*(?=\s*(?:::\s*<|\())/,
     'constant': /\b[A-Z_][A-Z_\d]+\b/,
-    'class-name': /\b[A-Z]\w*\b/,
+    'class-name': [
+        /\b[A-Z]\w*\b/,
+        /\b(?:[ui](?:8|16|32|64|128)|f(?:32|64)|uint|int|bool|char|str)\b/,
+        /\b(str|char|bool|Option|Result|String|Vec)\b/,
+    ],
 
     'namespace': {
         pattern: /(?:\b[a-z][a-z_\d]*\s*::\s*)*\b[a-z][a-z_\d]*\s*::(?!\s*<)/,
