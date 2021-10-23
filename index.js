@@ -8,7 +8,7 @@ for (var i = 0; i < 2; i++) {
 multilineComment = multilineComment.replace(/<self>/g, function () { return /[^\s\S]/.source; });
 
 
-Prism.languages.rust = {
+Prism.languages.jacy = {
     'comment': [
         {
             pattern: RegExp(/(^|[^\\])/.source + multilineComment),
@@ -31,7 +31,7 @@ Prism.languages.rust = {
         alias: 'string'
     },
     'attribute': {
-        pattern: /#!?\[(?:[^\[\]"]|"(?:\\[\s\S]|[^\\"])*")*\]/,
+        pattern: /@(?:.*)$/,
         greedy: true,
         alias: 'attr-name',
         inside: {
@@ -91,16 +91,10 @@ Prism.languages.rust = {
         }
     ],
     'keyword': [
-        // https://github.com/rust-lang/reference/blob/master/src/keywords.md
-        /\b(?:abstract|as|async|await|become|box|break|const|continue|crate|do|dyn|else|enum|extern|final|fn|for|if|impl|in|let|loop|macro|match|mod|move|mut|override|priv|pub|ref|return|self|Self|static|struct|super|trait|try|type|typeof|union|unsafe|unsized|use|virtual|where|while|yield)\b/,
-        // primitives and str
-        // https://doc.rust-lang.org/stable/rust-by-example/primitives.html
-        /\b(?:[ui](?:8|16|32|64|128|size)|f(?:32|64)|bool|char|str)\b/
+        /\b(?:as|break|const|continue|else|enum|false|func|for|if|impl|in|let|loop|match|mod|move|mut|party|priv|pub|ref|return|self|Self|static|struct|super|trait|true|type|use|where|while)\b/,
+        /\b(?:[ui](?:8|16|32|64|128)|f(?:32|64)|uint|int|bool|char|str)\b/
     ],
 
-    // functions can technically start with an upper-case letter, but this will introduce a lot of false positives
-    // and Rust's naming conventions recommend snake_case anyway.
-    // https://doc.rust-lang.org/1.0.0/style/style/naming/README.html
     'function': /\b[a-z_]\w*(?=\s*(?:::\s*<|\())/,
     'macro': {
         pattern: /\b\w+!/,
@@ -117,13 +111,13 @@ Prism.languages.rust = {
     },
 
     // Hex, oct, bin, dec numbers with visual separators and type suffix
-    'number': /\b(?:0x[\dA-Fa-f](?:_?[\dA-Fa-f])*|0o[0-7](?:_?[0-7])*|0b[01](?:_?[01])*|(?:(?:\d(?:_?\d)*)?\.)?\d(?:_?\d)*(?:[Ee][+-]?\d+)?)(?:_?(?:[iu](?:8|16|32|64|size)?|f32|f64))?\b/,
+    'number': /\b(?:0x[\dA-Fa-f](?:_?[\dA-Fa-f])*|0o[0-7](?:_?[0-7])*|0b[01](?:_?[01])*|(?:(?:\d(?:_?\d)*)?\.)?\d(?:_?\d)*(?:[Ee][+-]?\d+)?)(?:_?(?:[iu](?:8|16|32|64)?|f32|f64))?\b/,
     'boolean': /\b(?:false|true)\b/,
     'punctuation': /->|\.\.=|\.{1,3}|::|[{}[\];(),:]/,
     'operator': /[-+*\/%!^]=?|=[=>]?|&[&=]?|\|[|=]?|<<?=?|>>?=?|[@?]/
 };
 
-Prism.languages.rust['closure-params'].inside.rest = Prism.languages.rust;
-Prism.languages.rust['attribute'].inside['string'] = Prism.languages.rust['string'];
+Prism.languages.jacy['closure-params'].inside.rest = Prism.languages.jacy;
+Prism.languages.jacy['attribute'].inside['string'] = Prism.languages.jacy['string'];
 
 }(Prism));
