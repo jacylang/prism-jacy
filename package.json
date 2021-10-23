@@ -1,5 +1,5 @@
 {
-  "name": "prism-jacy",
+  "name": "@jacy-lang/prism-jacy",
   "version": "0.1.2",
   "description": "Prism syntax highlighter for Jacy",
   "main": "index.js",
